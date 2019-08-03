@@ -28,9 +28,9 @@ makeCacheMatrix <- function(x = matrix()) {
   
   setinv <- function(inverse) {                                                                            
     inv <<- inverse
-    #you this function is used to store the inverse of the matrix. It is in the makeCacheMatrix-envorioment (1)
-    #because it is here the inverse of the matrix is stored. The cacheSolve is used to inverse the matrix   (2)
-    #but not store the results.                                                                             (3)
+    #you this function is used to store the inverse of the matrix. It is in the makeCacheMatrix-envorioment
+    #because it is here the inverse of the matrix is stored. The cacheSolve is used to inverse the matrix 
+    #but not store the results.                                                                           
   }
   
   getinv <- function() {
