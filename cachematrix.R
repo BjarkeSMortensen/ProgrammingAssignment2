@@ -1,14 +1,55 @@
 ## --Asignment--
-## Put comments here that give an overall description of what your
-## functions do
-
-## Write a short comment describing this function
 
 #This function creates a list containing two objects ("x" and "inv") and four functions ("set", "get", "setinv" and "getinv").
 #It can be used to set a matrix and store a matrix and it's invert. The list however does not contain the function to create an
 #invert of a matrix. That is what the cacheSolve-function is for.
 
 
+makeCacheMatrix <- function(x = matrix()) {
+  x <- NULL               
+  inv <- NULL
+  set <- function(y) {    
+    x <<- y               
+    inv <<- NULL          
+  }
+  get <- function() {     
+    x 
+  }                       
+  
+  setinv <- function(inverse) {                                                                            
+    inv <<- inverse
+  }
+  
+  getinv <- function() {
+    inv
+  }
+  
+  list(set = set, get = get,
+       setinv = setinv,
+       getinv = getinv)
+}
+
+
+#This function calls the data stored in the makeCacheMatrix-function. The clever part is that if there for some reason is the inverse of a matrix already stored
+#in the makeCacheMatrix-function (the inv-object) then it returns that instead and does not calculate the inverse of the matrix stored in the makeCacheMatrix-function.
+
+cacheSolve <- function(x, ...) {
+  inv <- x$getinv()
+  if(!is.null(inv)) {
+    message("There already is a cache. Getting it cache now")
+    print(inv)
+  }
+  data <- x$get()        
+  inv <- solve(data, ...) 
+  x$setinv(inv)       
+  print(inv)
+}
+
+
+
+
+
+#The following is a repeat of the above with comments explaining the code. It can be ignored.
 
 makeCacheMatrix <- function(x = matrix()) {
   x <- NULL               #Creates the object where the matrix will be put
